@@ -1,0 +1,19 @@
+{
+  "name": "pool-js",
+  "version": "1.0.0",
+  "description": "2d pool with semi-realistic phsyics",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ./",
+    "dev": "live-server ./"
+  },
+  "keywords": [
+    "pool"
+  ],
+  "author": "Daniel Wood",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "live-server": "^1.2.0"
+  }
+}
