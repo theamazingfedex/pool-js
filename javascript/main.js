@@ -40,10 +40,12 @@ let ball01, ball02, ball03, ball04, ball05, ball06, ball07, ball08, ball09, ball
 
 PIXI.loader.add(ballTextures).on("progress", loadProgressHandler).load(setup);
 
-//let ballTextures = [
-  //PIXI.utils.TextureCache["images/ball_01.jpg"]
-//];
-//let ball_01_sprite = new PIXI.Sprite(ballTextures[0]);
+function getBallSprite(diameter, imagePath) {
+  
+}
+
+
+
 function loadProgressHandler() {
   let percentLoaded = Math.floor((++loadedCounter / textureCounter) * 100);
   //console.log("Loading: " + percentLoaded);
@@ -51,7 +53,7 @@ function loadProgressHandler() {
 function setup() {
   state = play;
   sprite1 = new Sprite(
-    Loader.resources["images/ball_01.jpg"].texture
+  Loader.resources["images/ball_01.jpg"].texture
   );
   sprite1.height = 64;
   sprite1.width = 128;
