@@ -1,7 +1,9 @@
 let table_length = 1024;
-let table_width = 512;
-let cushion_thickness = 10;
-let pocket_width = 20;
+let table_width = table_length/2;
+let ball_diameter = 32;
+
+let corner_pocket_width = 1.75 * ball_diameter;
+let side_pocket_width = 2.15 * ball_diameter;
 
 // Setup Renderer
 let renderer = PIXI.autoDetectRenderer(table_width, table_length);
