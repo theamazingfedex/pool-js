@@ -1,8 +1,10 @@
 function getBallSprite(diameter, imagePath) {
   let container = new Container();
   let circle = new Graphics();
+  let texture = new Texture.fromImage(imagePath, undefined, undefined, 2.0);
   let sprite = new Sprite(
-   Loader.resources[imagePath].texture
+    texture
+   //Loader.resources[imagePath].texture
   );
 
   sprite.height = diameter * 1.5;

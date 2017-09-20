@@ -6,11 +6,20 @@ let corner_pocket_width = 1.75 * ball_diameter;
 let side_pocket_width = 2.15 * ball_diameter;
 
 // Setup Renderer
-let renderer = PIXI.autoDetectRenderer(table_width, table_length);
+let renderer = PIXI.autoDetectRenderer(
+  table_width, 
+  table_length,
+  { antialias: true }
+);
+
 renderer.view.style.border = "2px solid black";
 renderer.backgroundColor = 0x3A5F0B;
 renderer.autoResize = false;
 
+// Create the stage container
+let stage = new PIXI.Container();
+
+// stage.filters = [new PIXI.filters.FXAAFilter()];
 // Setup Textures
 const ballTextures = [ 
   "images/ball_01.svg",
@@ -33,14 +42,15 @@ const textureCounter = ballTextures.length;
 const Sprite = PIXI.Sprite, 
       Loader = PIXI.loader, 
       Graphics = PIXI.Graphics,
-      Container = PIXI.Container
+      Texture = PIXI.Texture,
+      Container = PIXI.Container
 
 let loadedCounter = 0;
 let state = null;
 let balls = [];
 let ball01, ball02, ball03, ball04, ball05, ball06, ball07, ball08, ball09, ball10, ball11, ball12, ball13, ball14, ball15;
 
-PIXI.loader.add(ballTextures).on("progress", loadProgressHandler).load(setup);
+Loader.add(ballTextures).on("progress", loadProgressHandler).load(setup);
 
 function loadProgressHandler() {
   let percentLoaded = Math.floor((++loadedCounter / textureCounter) * 100);
@@ -74,9 +84,6 @@ function play() {
 
 //Add the canvas to the HTML document
 document.body.appendChild(renderer.view);
-
-//Create a container object called the `stage`
-let stage = new PIXI.Container();
 
 //Tell the `renderer` to `render` the `stage`
 renderer.render(stage);
