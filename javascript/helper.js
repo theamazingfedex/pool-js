@@ -11,8 +11,6 @@ function getBallSprite(diameter, imagePath) {
   sprite.width = diameter * 3;
   sprite.x = diameter/4;
   sprite.y = diameter/4;
-  sprite.vx = 0;
-  sprite.vy = 0;
 
   circle.beginFill(0x9966FF);
   circle.drawCircle(diameter,diameter,diameter/2);
@@ -21,10 +19,34 @@ function getBallSprite(diameter, imagePath) {
   circle.x = diameter/2;
   circle.y = diameter/2;
 
+  // gradient mask:
+  // let ctx = shadowRenderer.context;
+  let canvas = document.createElement('canvas');
+  let ctx = canvas.getContext('2d');
+  let ctxGradient = ctx.createRadialGradient(100, 130, 40, 100, 100, 60);
+  ctxGradient.addColorStop(0, "transparent");
+  ctxGradient.addColorStop(0.4, "black");
+  ctxGradient.addColorStop(1, "transparent");
+  ctx.fillStyle = ctxGradient;
+  ctx.fillRect(0, 0, 250, 250);
+  let gradientTexture = Texture.fromCanvas(canvas);
+  let gradient = new Sprite(gradientTexture);
+  gradient.height = sprite.height;
+  gradient.width = sprite.width;
+  gradient.x = sprite.x;
+  gradient.y = sprite.y;
+  gradient.pivot.set(gradient.height/2, gradient.width/2);
+  
+
+  circle.isMask = true;
   container.addChild(circle);
   sprite.mask = circle;
   container.addChild(sprite);
+  container.addChild(gradient);
+  // container.addChild(gradientTexture);
   container.mass = 1;
+  container.vx = 0;
+  container.vy = 0;
   
   return container;
 }

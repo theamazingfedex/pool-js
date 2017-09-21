@@ -1,6 +1,6 @@
-let table_length = 1024;
+let table_length = window.innerHeight;
 let table_width = table_length/2;
-let ball_diameter = 32;
+let ball_diameter = 16;
 
 let corner_pocket_width = 1.75 * ball_diameter;
 let side_pocket_width = 2.15 * ball_diameter;
@@ -9,12 +9,18 @@ let side_pocket_width = 2.15 * ball_diameter;
 let renderer = PIXI.autoDetectRenderer(
   table_width, 
   table_length,
-  { antialias: true }
+  { antialias: true, resolution: 2 }
 );
+let shadowRenderer = new PIXI.CanvasRenderer(100,100, {resolution: 2});
+// shadowRenderer.view.style.visibility = "hidden";
+// shadowRenderer.view.style.display = "none";
 
+renderer.view.style.position = "absolute";
+renderer.view.style.display = "block";
+renderer.autoResize = true;
 renderer.view.style.border = "2px solid black";
 renderer.backgroundColor = 0x3A5F0B;
-renderer.autoResize = false;
+// renderer.resize(table_length, table_height);
 
 // Create the stage container
 let stage = new PIXI.Container();
@@ -84,6 +90,7 @@ function play() {
 
 //Add the canvas to the HTML document
 document.body.appendChild(renderer.view);
+document.body.appendChild(shadowRenderer.view);
 
 //Tell the `renderer` to `render` the `stage`
 renderer.render(stage);
