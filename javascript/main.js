@@ -1,6 +1,6 @@
 let table_length = window.innerHeight;
 let table_width = table_length/2;
-let ball_diameter = 16;
+let ball_diameter = table_length * 0.0225;
 
 let corner_pocket_width = 1.75 * ball_diameter;
 let side_pocket_width = 2.15 * ball_diameter;
@@ -66,8 +66,8 @@ function loadProgressHandler() {
 function setup() {
   state = play;
   for (let i = 0; i < ballTextures.length; i++) {
-    let ball = getBallSprite(32, ballTextures[i]);
-    ball.position.set(32,32*(i+1));
+    let ball = getBallSprite(ball_diameter, ballTextures[i]);
+    ball.position.set(ball_diameter,ball_diameter*(i+1));
     balls.push(ball);
     stage.addChild(ball);
   }
