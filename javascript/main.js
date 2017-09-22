@@ -1,5 +1,8 @@
-let table_length = window.innerHeight - (0.08 * window.innerHeight);
+let windowHeight = window.innerHeight - 4;
+let table_length = windowHeight - (0.08 * windowHeight); // for reference, table_length is approximately 100 inches.
 let table_width = table_length/2;
+let size = [table_length, table_width];
+let ratio = size[0] / size[1];
 let ball_diameter = table_length * 0.0225;
 
 let corner_pocket_width = 1.75 * ball_diameter;
@@ -11,9 +14,9 @@ let bumper_thickness = table_length * 0.04;
 let renderer = PIXI.autoDetectRenderer(
   table_width, 
   table_length,
-  { antialias: true, resolution: 2 }
+  { antialias: true, resolution: 3 }
 );
-let shadowRenderer = new PIXI.CanvasRenderer(100,100, {resolution: 2});
+let shadowRenderer = new PIXI.CanvasRenderer(200,200, {resolution: 2});
 shadowRenderer.view.style.visibility = "hidden";
 shadowRenderer.view.style.display = "none";
 
