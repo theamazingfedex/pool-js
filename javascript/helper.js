@@ -1,7 +1,7 @@
 function getBallSprite(diameter, imagePath) {
   let container = new Container();
   let circle = new Graphics();
-  let texture = new Texture.fromImage(imagePath, undefined, undefined, 12.5);
+  let texture = new Texture.fromImage(imagePath, undefined, undefined, 2.5);
   let sprite = new Sprite(
     texture
    //Loader.resources[imagePath].texture
@@ -23,7 +23,7 @@ function getBallSprite(diameter, imagePath) {
   // let ctx = shadowRenderer.context;
   let canvas = document.createElement('canvas');
   let ctx = canvas.getContext('2d');
-  let ctxGradient = ctx.createRadialGradient(103, 100, ball_diameter*2, 103, 70, ball_diameter +35);
+  let ctxGradient = ctx.createRadialGradient(diameter, diameter, ball_diameter*2, diameter, diameter, ball_diameter +32);
   ctxGradient.addColorStop(0, "transparent");
   ctxGradient.addColorStop(0.4, "#333");
   ctxGradient.addColorStop(1, "transparent");

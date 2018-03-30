@@ -22,7 +22,7 @@ shadowRenderer.view.style.display = "none";
 
 renderer.view.style.position = "absolute";
 renderer.view.style.display = "block";
-renderer.autoResize = true;
+renderer.autoResize = false;
 renderer.view.style.border = "2px solid black";
 renderer.backgroundColor = 0x3A5F0B;
 // renderer.resize(table_length, table_height);
